@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-i6pp8o
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-i6pp8o
+  namespace: my-nginx-i6pp8o
+  labels:
+    name: nginx-i6pp8o
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-i6pp8o
+  template:
+    metadata:
+      namespace: my-nginx-i6pp8o
+      labels:
+        name: nginx-i6pp8o
+    spec:
+      containers:
+      - name: nginx-i6pp8o
+        image: nginx
+        ports:
+        - containerPort: 80
+
